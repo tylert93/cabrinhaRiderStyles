@@ -1,18 +1,18 @@
-document.addEventListener("DOMContentLoaded", () =>{
+document.addEventListener("DOMContentLoaded", () => {
 
-    var selectedStyle = document.querySelector(".selectedStyle");
-    var dropdownItems = document.querySelectorAll(".dropdown-item");
-    var allProducts = document.querySelectorAll(".product");
-    var rows = document.querySelectorAll(".row");
+    const selectedStyle = document.querySelector(".selectedStyle"),
+          dropdownItems = document.querySelectorAll(".dropdown-item"),
+          allProducts = document.querySelectorAll(".product"),
+          rows = document.querySelectorAll(".row");
 
     //select all dropdown items
     dropdownItems.forEach(function(item){
         //add click event listener to each item
         item.addEventListener("click", function(){
             //get the style that the user has picked 
-            var style = this.getAttribute("id");
+            let style = this.getAttribute("id");
             //only show products which are applicable to the style selected 
-            allProducts.forEach(function(item){
+            allProducts.forEach(item => {
                 if(!(item.classList.contains(style))){
                     item.style.display = "none";
                     item.setAttribute("show", "no");
@@ -22,13 +22,13 @@ document.addEventListener("DOMContentLoaded", () =>{
                 }
             })
             
-            rows.forEach(function(item){
+            rows.forEach(item => {
 
-                var thisRow = item;
-                var theseProducts = item.querySelectorAll(".product");
-                var anyVisible = false;
+                let thisRow = item,
+                    theseProducts = item.querySelectorAll(".product"),
+                    anyVisible = false;
                 //determine if any rows have no proucts showing at all
-                theseProducts.forEach(function(item){
+                theseProducts.forEach(item => {
                     if(item.getAttribute("show") === "yes"){
                         anyVisible = true;
                     }            
